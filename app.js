@@ -4,6 +4,8 @@ const morgan = require('morgan')
 const bodyParse = require('body-parser')
 const html = require('html-template-tag')
 const layout = require('./views/layout')
+const sequelize = require('sequelize')
+const db = require('./models');
 
 app.use(morgan('dev'))
 app.use(express.static(__dirname + '/public'))
@@ -16,6 +18,14 @@ app.get('/', (req, res) => {
 
 
 const PORT = 3000
-app.listen(PORT, () => {
-    console.log(`App is listening in port ${PORT}`)
-})
+
+const init = async() => {
+    await db.User.sync();
+    await db.Page.sync();
+
+    app.listen(PORT, () => {
+        console.log(`App is listening in port ${PORT}`)
+    })
+}
+
+init();
