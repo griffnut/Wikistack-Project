@@ -12,10 +12,7 @@ const Page = db.define('page', {
     },
     slug: {
         type: Sequelize.STRING,
-        allowNull: false,
-        validate: {
-            isUrl: true
-        }
+        allowNull: true
     },
     content: {
         type: Sequelize.TEXT,

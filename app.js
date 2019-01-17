@@ -9,15 +9,18 @@ const models = require('./models');
 const wikiRouter = require('./routes/wiki');
 const userRouter = require('./routes/user');
 
+app.use(morgan('dev'))
+app.use(express.static(__dirname + '/public'))
+app.use(bodyParse.urlencoded({extended: false}))
+app.use(bodyParse.json())
+
 app.use('/wiki', wikiRouter);
 //app.use('/user', userRouter);
 
-app.use(morgan('dev'))
-app.use(express.static(__dirname + '/public'))
-app.use(express.urlencoded({extended: false}))
 app.get('/', (req, res) => {
     res.redirect("/wiki")
 })
+
 
 const PORT = 3000
 

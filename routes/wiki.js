@@ -1,17 +1,16 @@
 const router = require('express').Router()
-const bodyParse = require('body-parser')
 const layout = require('../views/layout')
-const addPage = require('../views/addPage')
+const { addPage } = require('../views')
 const sequelize = require('sequelize')
-const models = require('../models');
+const { Page } = require('../models');
 
 router.get('/', (req, res) => {
     res.send('got to GET /wiki/')
 })
 
-router.post('/', (req, res) => {
+router.post('/', (req, res, next) => {
+    console.log(req)
     res.json(req.body)
-    res.send('got to POST /wiki/')
 })
 
 router.get('/add', (req, res) => {
