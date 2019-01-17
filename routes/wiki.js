@@ -10,6 +10,7 @@ router.get('/', (req, res) => {
 })
 
 router.post('/', (req, res) => {
+    res.json(req.body)
     res.send('got to POST /wiki/')
 })
 
