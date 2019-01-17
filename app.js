@@ -11,10 +11,8 @@ app.use(morgan('dev'))
 app.use(express.static(__dirname + '/public'))
 app.use(express.urlencoded({extended: false}))
 
-app.get('/', (req, res) => {
-    const strLayout = layout("Hello World!")
-    res.send(strLayout)
-})
+app.use('/wiki', require('./routes/wiki'))
+app.use('/user', require('./routes/user'))
 
 
 const PORT = 3000
