@@ -1,6 +1,7 @@
 const router = require('express').Router()
 const bodyParse = require('body-parser')
 const layout = require('../views/layout')
+const addPage = require('../views/addPage')
 const sequelize = require('sequelize')
 const models = require('../models');
 
@@ -13,7 +14,7 @@ router.post('/', (req, res) => {
 })
 
 router.get('/add', (req, res) => {
-    res.send('got to GET /wiki/add')
+    res.send(addPage())
 })
 
 module.exports = router;

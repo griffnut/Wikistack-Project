@@ -15,7 +15,9 @@ app.use('/wiki', wikiRouter);
 app.use(morgan('dev'))
 app.use(express.static(__dirname + '/public'))
 app.use(express.urlencoded({extended: false}))
-
+app.get('/', (req, res) => {
+    res.redirect("/wiki")
+})
 
 const PORT = 3000
 
