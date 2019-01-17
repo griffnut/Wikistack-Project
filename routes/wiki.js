@@ -4,10 +4,16 @@ const layout = require('../views/layout')
 const sequelize = require('sequelize')
 const models = require('../models');
 
-app.use(express.static(__dirname + '/public'))
-app.use(express.urlencoded({extended: false}))
-
-app.get('/', (req, res) => {
-    const strLayout = layout("Hello World!")
-    res.send(strLayout)
+router.get('/', (req, res) => {
+    res.send('got to GET /wiki/')
 })
+
+router.post('/', (req, res) => {
+    res.send('got to POST /wiki/')
+})
+
+router.get('/add', (req, res) => {
+    res.send('got to GET /wiki/add')
+})
+
+module.exports = router;
